@@ -6,7 +6,10 @@
     "address": "Road 27, Dhanmondi, Dhaka",
     "lat": 23.7461,
     "lng": 90.3742,
+    "propertyType": "apartment",
     "pricePerNight": 45,
+    "pricePerMonth": 600,
+    "superFeatured": true,
     "rating": 4.8,
     "reviews": 124,
     "bedrooms": 2,
@@ -29,7 +32,10 @@
     "address": "Gulshan 2, Dhaka",
     "lat": 23.7925,
     "lng": 90.4078,
+    "propertyType": "single-family",
     "pricePerNight": 180,
+    "pricePerMonth": 3800,
+    "superFeatured": true,
     "rating": 4.95,
     "reviews": 89,
     "bedrooms": 4,
@@ -52,7 +58,10 @@
     "address": "Inani Beach Road, Cox's Bazar",
     "lat": 21.4272,
     "lng": 92.0058,
+    "propertyType": "hotel",
     "pricePerNight": 95,
+    "pricePerMonth": 2000,
+    "superFeatured": false,
     "rating": 4.7,
     "reviews": 210,
     "bedrooms": 3,
@@ -75,7 +84,10 @@
     "address": "Nilgiri Hills, Bandarban",
     "lat": 22.1953,
     "lng": 92.2184,
+    "propertyType": "tiny-house",
     "pricePerNight": 60,
+    "pricePerMonth": 1200,
+    "superFeatured": false,
     "rating": 4.6,
     "reviews": 67,
     "bedrooms": 2,
@@ -93,12 +105,15 @@
   },
   {
     "id": 5,
-    "title": "Studio Loft in Banani",
+    "title": "Girls Bachelor Mess · Banani",
     "city": "Dhaka",
     "address": "Road 11, Banani, Dhaka",
     "lat": 23.7937,
     "lng": 90.4066,
+    "propertyType": "girls-bachelor",
     "pricePerNight": 35,
+    "pricePerMonth": 180,
+    "superFeatured": false,
     "rating": 4.5,
     "reviews": 156,
     "bedrooms": 1,
@@ -112,7 +127,7 @@
       "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200",
       "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1200"
     ],
-    "description": "Stylish open-plan studio loft in trendy Banani — ideal for solo travelers or couples."
+    "description": "Safe, clean female-only bachelor mess near universities and offices."
   },
   {
     "id": 6,
@@ -121,7 +136,10 @@
     "address": "Srimangal, Sylhet",
     "lat": 24.3065,
     "lng": 91.7296,
+    "propertyType": "tiny-house",
     "pricePerNight": 70,
+    "pricePerMonth": 1500,
+    "superFeatured": false,
     "rating": 4.85,
     "reviews": 98,
     "bedrooms": 2,
@@ -144,7 +162,10 @@
     "address": "Khulna Port, Sundarbans",
     "lat": 22.4953,
     "lng": 89.4870,
+    "propertyType": "hotel",
     "pricePerNight": 120,
+    "pricePerMonth": 2500,
+    "superFeatured": false,
     "rating": 4.9,
     "reviews": 45,
     "bedrooms": 3,
@@ -162,12 +183,15 @@
   },
   {
     "id": 8,
-    "title": "Penthouse with City Skyline",
+    "title": "Penthouse Condo with City Skyline",
     "city": "Dhaka",
     "address": "Bashundhara R/A, Dhaka",
     "lat": 23.8103,
     "lng": 90.4286,
+    "propertyType": "condo",
     "pricePerNight": 220,
+    "pricePerMonth": 4500,
+    "superFeatured": true,
     "rating": 4.92,
     "reviews": 73,
     "bedrooms": 3,
@@ -181,16 +205,19 @@
       "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200",
       "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200"
     ],
-    "description": "Top-floor penthouse with panoramic views of Dhaka's skyline. Premium amenities included."
+    "description": "Top-floor penthouse condo with panoramic views of Dhaka's skyline. Premium amenities included."
   },
   {
     "id": 9,
-    "title": "Traditional Mud House Stay",
+    "title": "Mobile Home near Mithapukur",
     "city": "Rangpur",
     "address": "Mithapukur, Rangpur",
     "lat": 25.7558,
     "lng": 89.2444,
+    "propertyType": "mobile-home",
     "pricePerNight": 25,
+    "pricePerMonth": 220,
+    "superFeatured": false,
     "rating": 4.4,
     "reviews": 38,
     "bedrooms": 2,
@@ -204,16 +231,19 @@
       "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1200",
       "https://images.unsplash.com/photo-1542621334-a254cf47733d?w=1200"
     ],
-    "description": "Experience rural village life in an authentic restored mud house with home-cooked meals."
+    "description": "Affordable mobile home at a fixed location with a small garden plot."
   },
   {
     "id": 10,
-    "title": "Modern Glass House Retreat",
+    "title": "Modern Glass Duplex Retreat",
     "city": "Chattogram",
     "address": "Foy's Lake Area, Chattogram",
     "lat": 22.3663,
     "lng": 91.7889,
+    "propertyType": "duplex",
     "pricePerNight": 150,
+    "pricePerMonth": 3200,
+    "superFeatured": false,
     "rating": 4.88,
     "reviews": 112,
     "bedrooms": 3,
@@ -227,16 +257,19 @@
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200",
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200"
     ],
-    "description": "Stunning glass-walled retreat overlooking Foy's Lake. Architectural masterpiece."
+    "description": "Stunning duplex with glass walls overlooking Foy's Lake. Architectural masterpiece."
   },
   {
     "id": 11,
-    "title": "Heritage Colonial Bungalow",
+    "title": "Heritage Colonial Townhouse",
     "city": "Khulna",
     "address": "Khalishpur, Khulna",
     "lat": 22.8456,
     "lng": 89.5403,
+    "propertyType": "townhouse",
     "pricePerNight": 80,
+    "pricePerMonth": 1700,
+    "superFeatured": false,
     "rating": 4.65,
     "reviews": 54,
     "bedrooms": 4,
@@ -250,7 +283,7 @@
       "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=1200",
       "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200"
     ],
-    "description": "Restored colonial-era bungalow with high ceilings, antique furnishings, and a lush garden."
+    "description": "Restored colonial-era townhouse with high ceilings, antique furnishings, and a lush garden."
   },
   {
     "id": 12,
@@ -259,7 +292,10 @@
     "address": "Padma Riverbank, Rajshahi",
     "lat": 24.3636,
     "lng": 88.6241,
+    "propertyType": "tiny-house",
     "pricePerNight": 40,
+    "pricePerMonth": 800,
+    "superFeatured": false,
     "rating": 4.55,
     "reviews": 41,
     "bedrooms": 1,
@@ -282,7 +318,10 @@
     "address": "West Panthapath, Dhaka",
     "lat": 23.7530,
     "lng": 90.3845,
+    "propertyType": "apartment",
     "pricePerNight": 55,
+    "pricePerMonth": 800,
+    "superFeatured": false,
     "rating": 4.6,
     "reviews": 88,
     "bedrooms": 3,
@@ -300,12 +339,15 @@
   },
   {
     "id": 14,
-    "title": "Quiet Studio in Mohammadpur",
+    "title": "Boys Bachelor Mess · Mohammadpur",
     "city": "Dhaka",
     "address": "Iqbal Road, Mohammadpur, Dhaka",
     "lat": 23.7654,
     "lng": 90.3589,
+    "propertyType": "boys-bachelor",
     "pricePerNight": 28,
+    "pricePerMonth": 140,
+    "superFeatured": false,
     "rating": 4.3,
     "reviews": 62,
     "bedrooms": 1,
@@ -319,7 +361,7 @@
       "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200",
       "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200"
     ],
-    "description": "Budget-friendly studio in a calm Mohammadpur neighborhood, close to Dhanmondi clinics."
+    "description": "Budget-friendly male-only bachelor mess near universities and hospitals."
   },
   {
     "id": 15,
@@ -328,7 +370,10 @@
     "address": "Block J, Bashundhara R/A, Dhaka",
     "lat": 23.8160,
     "lng": 90.4240,
+    "propertyType": "apartment",
     "pricePerNight": 75,
+    "pricePerMonth": 1200,
+    "superFeatured": true,
     "rating": 4.75,
     "reviews": 104,
     "bedrooms": 3,
@@ -346,12 +391,15 @@
   },
   {
     "id": 16,
-    "title": "Cozy Stay in Mirpur DOHS",
+    "title": "Duplex House in Mirpur DOHS",
     "city": "Dhaka",
     "address": "Mirpur DOHS, Dhaka",
     "lat": 23.8275,
     "lng": 90.3674,
+    "propertyType": "duplex",
     "pricePerNight": 38,
+    "pricePerMonth": 900,
+    "superFeatured": false,
     "rating": 4.5,
     "reviews": 49,
     "bedrooms": 2,
@@ -365,16 +413,19 @@
       "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200",
       "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200"
     ],
-    "description": "Peaceful stay in a residential pocket of Mirpur — easy commute across Dhaka."
+    "description": "Peaceful duplex home in a residential pocket of Mirpur — easy commute across Dhaka."
   },
   {
     "id": 17,
-    "title": "Modern Suite in Uttara Sector 4",
+    "title": "Modern Suite Hotel in Uttara",
     "city": "Dhaka",
     "address": "Sector 4, Uttara, Dhaka",
     "lat": 23.8728,
     "lng": 90.4017,
+    "propertyType": "hotel",
     "pricePerNight": 50,
+    "pricePerMonth": 1000,
+    "superFeatured": true,
     "rating": 4.65,
     "reviews": 76,
     "bedrooms": 2,
@@ -388,6 +439,6 @@
       "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200",
       "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200"
     ],
-    "description": "Stylish modern suite near the airport — convenient for arriving travelers."
+    "description": "Stylish modern hotel suite near the airport — convenient for arriving travelers."
   }
 ]

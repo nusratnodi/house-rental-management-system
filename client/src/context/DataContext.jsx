@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import seedHouses from "../data/houses.json";
 import seedHospitals from "../data/hospitals.json";
 import seedUsers from "../data/users.json";
+import seedPropertyTypes from "../data/propertyTypes.json";
 
 const DataContext = createContext(null);
 
@@ -9,11 +10,14 @@ const HOUSES_KEY = "ohrms_houses";
 const HOSPITALS_KEY = "ohrms_hospitals";
 const USERS_KEY = "ohrms_users";
 const ORDERS_KEY = "ohrms_orders";
+const PTYPES_KEY = "ohrms_property_types";
+const VERSION_KEY = "ohrms_data_version";
+const DATA_VERSION = 2;
 
-function loadOrSeed(key, seed) {
+function loadOrSeed(key, seed, version) {
   try {
     const raw = localStorage.getItem(key);
-    if (raw) return JSON.parse(raw);
+    if (raw && version === DATA_VERSION) return JSON.parse(raw);
   } catch {
     // ignore
   }
@@ -21,14 +25,27 @@ function loadOrSeed(key, seed) {
   return seed;
 }
 
+function loadStoredVersion() {
+  try {
+    return Number(localStorage.getItem(VERSION_KEY)) || 0;
+  } catch {
+    return 0;
+  }
+}
+
 function nextId(list) {
   return list.reduce((m, x) => Math.max(m, Number(x.id) || 0), 0) + 1;
 }
 
 export function DataProvider({ children }) {
-  const [houses, setHouses] = useState(() => loadOrSeed(HOUSES_KEY, seedHouses));
-  const [hospitals, setHospitals] = useState(() => loadOrSeed(HOSPITALS_KEY, seedHospitals));
-  const [users, setUsers] = useState(() => loadOrSeed(USERS_KEY, seedUsers));
+  const storedVersion = loadStoredVersion();
+
+  const [houses, setHouses] = useState(() => loadOrSeed(HOUSES_KEY, seedHouses, storedVersion));
+  const [hospitals, setHospitals] = useState(() => loadOrSeed(HOSPITALS_KEY, seedHospitals, storedVersion));
+  const [users, setUsers] = useState(() => loadOrSeed(USERS_KEY, seedUsers, storedVersion));
+  const [propertyTypes, setPropertyTypes] = useState(() =>
+    loadOrSeed(PTYPES_KEY, seedPropertyTypes, storedVersion)
+  );
   const [orders, setOrders] = useState(() => {
     try {
       const raw = localStorage.getItem(ORDERS_KEY);
@@ -38,9 +55,11 @@ export function DataProvider({ children }) {
     }
   });
 
+  useEffect(() => { localStorage.setItem(VERSION_KEY, String(DATA_VERSION)); }, []);
   useEffect(() => { localStorage.setItem(HOUSES_KEY, JSON.stringify(houses)); }, [houses]);
   useEffect(() => { localStorage.setItem(HOSPITALS_KEY, JSON.stringify(hospitals)); }, [hospitals]);
   useEffect(() => { localStorage.setItem(USERS_KEY, JSON.stringify(users)); }, [users]);
+  useEffect(() => { localStorage.setItem(PTYPES_KEY, JSON.stringify(propertyTypes)); }, [propertyTypes]);
   useEffect(() => { localStorage.setItem(ORDERS_KEY, JSON.stringify(orders)); }, [orders]);
 
   // ---------- Houses ----------
@@ -88,6 +107,21 @@ export function DataProvider({ children }) {
     setUsers((p) => p.filter((u) => u.id !== id));
   }
 
+  // ---------- Property Types ----------
+  function createPropertyType(data) {
+    const pt = { ...data };
+    if (!pt.id) return null;
+    if (propertyTypes.some((x) => x.id === pt.id)) return null;
+    setPropertyTypes((p) => [...p, pt]);
+    return pt;
+  }
+  function updatePropertyType(id, patch) {
+    setPropertyTypes((p) => p.map((t) => (t.id === id ? { ...t, ...patch } : t)));
+  }
+  function deletePropertyType(id) {
+    setPropertyTypes((p) => p.filter((t) => t.id !== id));
+  }
+
   // ---------- Orders ----------
   function addOrder(order) {
     setOrders((p) => [order, ...p]);
@@ -99,12 +133,24 @@ export function DataProvider({ children }) {
     setOrders((p) => p.filter((o) => o.id !== id));
   }
 
+  const propertyTypeById = useMemo(() => {
+    const map = new Map();
+    propertyTypes.forEach((t) => map.set(t.id, t));
+    return map;
+  }, [propertyTypes]);
+
+  function getPropertyType(id) {
+    return propertyTypeById.get(id) || null;
+  }
+
   const value = useMemo(
     () => ({
       houses,
       hospitals,
       users,
       orders,
+      propertyTypes,
+      getPropertyType,
       createHouse,
       updateHouse,
       deleteHouse,
@@ -114,11 +160,14 @@ export function DataProvider({ children }) {
       createUser,
       updateUser,
       deleteUser,
+      createPropertyType,
+      updatePropertyType,
+      deletePropertyType,
       addOrder,
       updateOrder,
       deleteOrder,
     }),
-    [houses, hospitals, users, orders]
+    [houses, hospitals, users, orders, propertyTypes, propertyTypeById]
   );
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

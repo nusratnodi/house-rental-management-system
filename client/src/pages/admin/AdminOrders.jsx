@@ -1,6 +1,13 @@
 import { Fragment, useMemo, useState } from "react";
 import { useData } from "../../context/DataContext";
 
+function itemLineTotal(item) {
+  if (item.billingMode === "monthly") {
+    return (item.house.pricePerMonth || 0) * (item.months || 0);
+  }
+  return (item.house.pricePerNight || 0) * (item.nights || 0);
+}
+
 const STATUSES = ["Confirmed", "Checked-in", "Completed", "Cancelled"];
 
 function formatDate(iso) {
@@ -8,7 +15,7 @@ function formatDate(iso) {
 }
 
 export default function AdminOrders() {
-  const { orders, users, updateOrder, deleteOrder } = useData();
+  const { orders, users, updateOrder, deleteOrder, getPropertyType } = useData();
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [expanded, setExpanded] = useState(null);
@@ -140,15 +147,37 @@ export default function AdminOrders() {
                           <div>
                             <h4>Items</h4>
                             <ul className="admin-kv">
-                              {o.items.map((it) => (
-                                <li key={it.house.id}>
-                                  <span>
-                                    {it.house.title}
-                                    <small className="admin-muted"> · {it.checkIn} → {it.checkOut}</small>
-                                  </span>
-                                  <strong>${(it.house.pricePerNight * it.nights).toFixed(2)}</strong>
-                                </li>
-                              ))}
+                              {o.items.map((it) => {
+                                const ptype = getPropertyType(it.house.propertyType);
+                                const monthly = it.billingMode === "monthly";
+                                return (
+                                  <li key={it.house.id}>
+                                    <span>
+                                      {ptype && (
+                                        <span className="admin-pill admin-pill-customer">
+                                          {ptype.icon} {ptype.name}
+                                        </span>
+                                      )}{" "}
+                                      {it.house.title}
+                                      <small className="admin-muted">
+                                        {" "}·{" "}
+                                        {monthly
+                                          ? `${it.months} mo lease`
+                                          : `${it.checkIn} → ${it.checkOut}`}
+                                      </small>
+                                      {it.agreement && (
+                                        <small className="admin-muted">
+                                          {" "}·{" "}
+                                          {it.agreement.tenantGender && `${it.agreement.tenantGender} · `}
+                                          {it.agreement.idNumber && `ID ${it.agreement.idNumber} · `}
+                                          {it.agreement.agreed ? "agreed ✓" : "not agreed"}
+                                        </small>
+                                      )}
+                                    </span>
+                                    <strong>${itemLineTotal(it).toFixed(2)}</strong>
+                                  </li>
+                                );
+                              })}
                             </ul>
                           </div>
                           <div>
@@ -162,6 +191,9 @@ export default function AdminOrders() {
                             <ul className="admin-kv">
                               <li><span>Subtotal</span><strong>${o.subtotal?.toFixed(2)}</strong></li>
                               <li><span>Service fee</span><strong>${o.serviceFee?.toFixed(2)}</strong></li>
+                              {o.securityDeposit > 0 && (
+                                <li><span>Deposits</span><strong>${o.securityDeposit.toFixed(2)}</strong></li>
+                              )}
                               <li><span>Total</span><strong>${o.total?.toFixed(2)}</strong></li>
                             </ul>
                           </div>

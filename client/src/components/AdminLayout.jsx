@@ -28,6 +28,9 @@ export default function AdminLayout() {
           <NavLink to="/admin/houses">
             <span className="admin-nav-ic">🏠</span> Properties
           </NavLink>
+          <NavLink to="/admin/categories">
+            <span className="admin-nav-ic">📂</span> Categories
+          </NavLink>
           <NavLink to="/admin/hospitals">
             <span className="admin-nav-ic">🏥</span> Hospitals
           </NavLink>

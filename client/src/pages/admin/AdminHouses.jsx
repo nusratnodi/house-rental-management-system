@@ -10,7 +10,10 @@ function emptyHouse() {
     address: "",
     lat: 23.8103,
     lng: 90.4125,
+    propertyType: "apartment",
     pricePerNight: 50,
+    pricePerMonth: 800,
+    superFeatured: false,
     rating: 4.5,
     reviews: 0,
     bedrooms: 1,
@@ -25,7 +28,8 @@ function emptyHouse() {
 }
 
 export default function AdminHouses() {
-  const { houses, createHouse, updateHouse, deleteHouse } = useData();
+  const { houses, propertyTypes, createHouse, updateHouse, deleteHouse } = useData();
+  const typeOptions = propertyTypes.filter((t) => t.kind !== "tag");
   const [search, setSearch] = useState("");
   const [editing, setEditing] = useState(null); // house or null
   const [creating, setCreating] = useState(false);
@@ -61,6 +65,7 @@ export default function AdminHouses() {
     const payload = {
       ...editing,
       pricePerNight: Number(editing.pricePerNight) || 0,
+      pricePerMonth: Number(editing.pricePerMonth) || 0,
       rating: Number(editing.rating) || 0,
       reviews: Number(editing.reviews) || 0,
       bedrooms: Number(editing.bedrooms) || 0,
@@ -68,6 +73,7 @@ export default function AdminHouses() {
       guests: Number(editing.guests) || 0,
       lat: Number(editing.lat) || 0,
       lng: Number(editing.lng) || 0,
+      superFeatured: !!editing.superFeatured,
       gallery:
         Array.isArray(editing.gallery)
           ? editing.gallery.filter(Boolean)
@@ -127,46 +133,62 @@ export default function AdminHouses() {
             <tr>
               <th></th>
               <th>Title</th>
+              <th>Category</th>
               <th>City</th>
-              <th>Price</th>
-              <th>Rating</th>
-              <th>Superhost</th>
+              <th>Night</th>
+              <th>Month</th>
+              <th>Tags</th>
               <th>Beds</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {filtered.map((h) => (
-              <tr key={h.id}>
-                <td>
-                  {h.image ? (
-                    <img src={h.image} alt="" className="admin-thumb" />
-                  ) : (
-                    <div className="admin-thumb admin-thumb-fallback">🏠</div>
-                  )}
-                </td>
-                <td>
-                  <strong>{h.title}</strong>
-                  <div className="admin-muted admin-sm">{h.address}</div>
-                </td>
-                <td>{h.city}</td>
-                <td>${h.pricePerNight}</td>
-                <td>★ {h.rating}</td>
-                <td>{h.superhost ? "Yes" : "—"}</td>
-                <td>{h.bedrooms}</td>
-                <td className="admin-row-actions">
-                  <button className="admin-btn admin-btn-ghost" onClick={() => startEdit(h)}>
-                    Edit
-                  </button>
-                  <button className="admin-btn admin-btn-danger" onClick={() => onDelete(h.id)}>
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {filtered.map((h) => {
+              const type = propertyTypes.find((t) => t.id === h.propertyType);
+              return (
+                <tr key={h.id}>
+                  <td>
+                    {h.image ? (
+                      <img src={h.image} alt="" className="admin-thumb" />
+                    ) : (
+                      <div className="admin-thumb admin-thumb-fallback">🏠</div>
+                    )}
+                  </td>
+                  <td>
+                    <strong>{h.title}</strong>
+                    <div className="admin-muted admin-sm">{h.address}</div>
+                  </td>
+                  <td>
+                    {type ? (
+                      <span className="admin-pill admin-pill-customer">
+                        {type.icon} {type.name}
+                      </span>
+                    ) : (
+                      <span className="admin-muted admin-sm">—</span>
+                    )}
+                  </td>
+                  <td>{h.city}</td>
+                  <td>${h.pricePerNight}</td>
+                  <td>${h.pricePerMonth || "—"}</td>
+                  <td>
+                    {h.superhost && <span className="admin-pill admin-pill-completed">host</span>}{" "}
+                    {h.superFeatured && <span className="admin-pill admin-pill-checked-in">✨ super</span>}
+                  </td>
+                  <td>{h.bedrooms}</td>
+                  <td className="admin-row-actions">
+                    <button className="admin-btn admin-btn-ghost" onClick={() => startEdit(h)}>
+                      Edit
+                    </button>
+                    <button className="admin-btn admin-btn-danger" onClick={() => onDelete(h.id)}>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
             {filtered.length === 0 && (
               <tr>
-                <td colSpan={8} className="admin-empty">
+                <td colSpan={9} className="admin-empty">
                   No properties match.
                 </td>
               </tr>
@@ -195,6 +217,21 @@ export default function AdminHouses() {
                   value={editing.title}
                   onChange={(e) => setEditing({ ...editing, title: e.target.value })}
                 />
+              </label>
+              <label className="admin-col-2">
+                Category
+                <select
+                  required
+                  value={editing.propertyType || ""}
+                  onChange={(e) => setEditing({ ...editing, propertyType: e.target.value })}
+                >
+                  <option value="" disabled>Select a category…</option>
+                  {typeOptions.map((t) => (
+                    <option key={t.id} value={t.id}>
+                      {t.icon} {t.name}
+                    </option>
+                  ))}
+                </select>
               </label>
               <label>
                 City
@@ -238,6 +275,15 @@ export default function AdminHouses() {
                   required
                   value={editing.pricePerNight}
                   onChange={(e) => setEditing({ ...editing, pricePerNight: e.target.value })}
+                />
+              </label>
+              <label>
+                Price / month
+                <input
+                  type="number"
+                  min="0"
+                  value={editing.pricePerMonth}
+                  onChange={(e) => setEditing({ ...editing, pricePerMonth: e.target.value })}
                 />
               </label>
               <label>
@@ -328,13 +374,21 @@ export default function AdminHouses() {
                 </div>
               </div>
 
-              <label className="admin-col-2 admin-inline">
+              <label className="admin-inline">
                 <input
                   type="checkbox"
                   checked={!!editing.superhost}
                   onChange={(e) => setEditing({ ...editing, superhost: e.target.checked })}
                 />
                 Superhost
+              </label>
+              <label className="admin-inline">
+                <input
+                  type="checkbox"
+                  checked={!!editing.superFeatured}
+                  onChange={(e) => setEditing({ ...editing, superFeatured: e.target.checked })}
+                />
+                ✨ Super Condition (priority listing)
               </label>
             </div>
 

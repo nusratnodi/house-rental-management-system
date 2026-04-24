@@ -13,6 +13,7 @@ import AdminHouses from "./pages/admin/AdminHouses";
 import AdminHospitals from "./pages/admin/AdminHospitals";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminOrders from "./pages/admin/AdminOrders";
+import AdminCategories from "./pages/admin/AdminCategories";
 import { RequireAdmin, RequireCustomer } from "./components/ProtectedRoute";
 
 export default function App() {
@@ -46,6 +47,7 @@ export default function App() {
         >
           <Route index element={<Dashboard />} />
           <Route path="houses" element={<AdminHouses />} />
+          <Route path="categories" element={<AdminCategories />} />
           <Route path="hospitals" element={<AdminHospitals />} />
           <Route path="users" element={<AdminUsers />} />
           <Route path="orders" element={<AdminOrders />} />

@@ -22,15 +22,41 @@ export function CartProvider({ children }) {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
   }, [cart]);
 
-  function addToCart(house, checkIn, checkOut, nights) {
+  function addToCart(house, checkIn, checkOut, nights, extras = {}) {
+    const base = {
+      house,
+      checkIn,
+      checkOut,
+      nights,
+      billingMode: extras.billingMode || "daily",
+      months: extras.months || 0,
+      unitPrice: extras.unitPrice ?? (house.pricePerNight || 0),
+      subtotal:
+        extras.subtotal ??
+        ((extras.billingMode === "monthly"
+          ? (house.pricePerMonth || 0) * (extras.months || 0)
+          : (house.pricePerNight || 0) * nights)),
+      securityDeposit: extras.securityDeposit || 0,
+      agreement: {
+        agreed: false,
+        tenantGender: "",
+        idNumber: "",
+      },
+    };
     setCart((prev) => {
       const exists = prev.find((item) => item.house.id === house.id);
       if (exists) {
         return prev.map((item) =>
-          item.house.id === house.id ? { ...item, checkIn, checkOut, nights } : item
+          item.house.id === house.id
+            ? {
+                ...item,
+                ...base,
+                agreement: item.agreement || base.agreement,
+              }
+            : item
         );
       }
-      return [...prev, { house, checkIn, checkOut, nights }];
+      return [...prev, base];
     });
   }
 
@@ -50,12 +76,10 @@ export function CartProvider({ children }) {
 
   function placeOrder(guestInfo) {
     if (cart.length === 0) return null;
-    const subtotal = cart.reduce(
-      (sum, item) => sum + item.house.pricePerNight * item.nights,
-      0
-    );
+    const subtotal = cart.reduce((sum, item) => sum + (item.subtotal || 0), 0);
+    const depositTotal = cart.reduce((sum, item) => sum + (item.securityDeposit || 0), 0);
     const serviceFee = +(subtotal * 0.12).toFixed(2);
-    const total = +(subtotal + serviceFee).toFixed(2);
+    const total = +(subtotal + serviceFee + depositTotal).toFixed(2);
     const order = {
       id: Date.now(),
       placedAt: new Date().toISOString(),
@@ -63,6 +87,7 @@ export function CartProvider({ children }) {
       items: cart,
       subtotal,
       serviceFee,
+      securityDeposit: depositTotal,
       total,
       guest: guestInfo,
       status: "Confirmed",

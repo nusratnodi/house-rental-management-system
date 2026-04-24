@@ -1,18 +1,17 @@
 import { useMemo, useState } from "react";
 import HouseCard from "../components/HouseCard";
-import { haversineKm } from "../utils/distance";
 import { useData } from "../context/DataContext";
 
 const ALL_AMENITIES = ["Wi-Fi", "AC", "Kitchen", "Pool", "Parking", "TV"];
-const NEAR_RADIUS_KM = 8;
 
 export default function Home() {
-  const { houses: housesData, hospitals: hospitalsData } = useData();
+  const { houses: housesData, propertyTypes } = useData();
   const [search, setSearch] = useState("");
   const [maxPrice, setMaxPrice] = useState(250);
   const [superhostOnly, setSuperhostOnly] = useState(false);
+  const [superFeaturedOnly, setSuperFeaturedOnly] = useState(false);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
-  const [hospitalId, setHospitalId] = useState("");
+  const [typeId, setTypeId] = useState("");
 
   function toggleAmenity(a) {
     setSelectedAmenities((prev) =>
@@ -20,37 +19,34 @@ export default function Home() {
     );
   }
 
-  const selectedHospital = useMemo(
-    () => hospitalsData.find((h) => h.id === hospitalId) || null,
-    [hospitalId, hospitalsData]
+  const visibleTypes = useMemo(
+    () => propertyTypes.filter((t) => t.kind !== "tag"),
+    [propertyTypes]
   );
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
-    let list = housesData
-      .map((h) => {
-        const distance = selectedHospital
-          ? haversineKm(selectedHospital.lat, selectedHospital.lng, h.lat, h.lng)
-          : null;
-        return { ...h, distance };
-      })
-      .filter((h) => {
-        if (q && !`${h.title} ${h.city} ${h.address}`.toLowerCase().includes(q)) return false;
-        if (h.pricePerNight > maxPrice) return false;
-        if (superhostOnly && !h.superhost) return false;
-        if (selectedAmenities.length > 0) {
-          const hasAll = selectedAmenities.every((a) => h.amenities.includes(a));
-          if (!hasAll) return false;
-        }
-        if (selectedHospital && h.distance > NEAR_RADIUS_KM) return false;
-        return true;
-      });
+    const list = housesData.filter((h) => {
+      if (q && !`${h.title} ${h.city} ${h.address}`.toLowerCase().includes(q)) return false;
+      if (h.pricePerNight > maxPrice) return false;
+      if (superhostOnly && !h.superhost) return false;
+      if (superFeaturedOnly && !h.superFeatured) return false;
+      if (typeId && h.propertyType !== typeId) return false;
+      if (selectedAmenities.length > 0) {
+        const hasAll = selectedAmenities.every((a) => h.amenities.includes(a));
+        if (!hasAll) return false;
+      }
+      return true;
+    });
 
-    if (selectedHospital) {
-      list.sort((a, b) => a.distance - b.distance);
-    }
+    list.sort((a, b) => {
+      if ((b.superFeatured ? 1 : 0) - (a.superFeatured ? 1 : 0) !== 0) {
+        return (b.superFeatured ? 1 : 0) - (a.superFeatured ? 1 : 0);
+      }
+      return b.id - a.id;
+    });
     return list;
-  }, [search, maxPrice, superhostOnly, selectedAmenities, selectedHospital, housesData]);
+  }, [search, maxPrice, superhostOnly, superFeaturedOnly, typeId, selectedAmenities, housesData]);
 
   return (
     <div className="container">
@@ -59,36 +55,29 @@ export default function Home() {
         <p>Discover unique homes — from city apartments to beachfront bungalows.</p>
       </section>
 
-      <section className="hospital-strip">
-        <div className="hospital-strip-head">
-          <h2>🏥 Stays near popular Dhaka hospitals</h2>
-          {selectedHospital && (
-            <button className="link-clear" onClick={() => setHospitalId("")}>
-              Clear hospital
-            </button>
-          )}
-        </div>
-        <div className="hospital-chips">
-          {hospitalsData.map((hosp) => (
+      <section className="category-strip">
+        <div className="category-chips">
+          <button
+            type="button"
+            className={`category-chip ${!typeId ? "active" : ""}`}
+            onClick={() => setTypeId("")}
+          >
+            <span className="category-chip-ic">🌐</span>
+            <span className="category-chip-label">All</span>
+          </button>
+          {visibleTypes.map((t) => (
             <button
-              key={hosp.id}
+              key={t.id}
               type="button"
-              className={`hospital-chip ${hospitalId === hosp.id ? "active" : ""}`}
-              onClick={() => setHospitalId(hospitalId === hosp.id ? "" : hosp.id)}
+              className={`category-chip ${typeId === t.id ? "active" : ""}`}
+              onClick={() => setTypeId(typeId === t.id ? "" : t.id)}
+              title={t.description}
             >
-              <span className="hospital-chip-icon">{hosp.icon}</span>
-              <span>
-                <strong>{hosp.name}</strong>
-                <small>{hosp.area}</small>
-              </span>
+              <span className="category-chip-ic">{t.icon}</span>
+              <span className="category-chip-label">{t.name}</span>
             </button>
           ))}
         </div>
-        {selectedHospital && (
-          <p className="hospital-note">
-            Showing stays within {NEAR_RADIUS_KM} km of <strong>{selectedHospital.name}</strong>, sorted by distance.
-          </p>
-        )}
       </section>
 
       <section className="filters">
@@ -102,7 +91,7 @@ export default function Home() {
 
         <div className="filter-row">
           <label className="filter-item">
-            Max price: <strong>${maxPrice}</strong>
+            Max nightly price: <strong>${maxPrice}</strong>
             <input
               type="range"
               min="20"
@@ -120,6 +109,15 @@ export default function Home() {
               onChange={(e) => setSuperhostOnly(e.target.checked)}
             />
             Superhost only
+          </label>
+
+          <label className="filter-item checkbox">
+            <input
+              type="checkbox"
+              checked={superFeaturedOnly}
+              onChange={(e) => setSuperFeaturedOnly(e.target.checked)}
+            />
+            ✨ Super Condition only
           </label>
         </div>
 
@@ -139,27 +137,17 @@ export default function Home() {
 
       <p className="results-count">
         {filtered.length} stay{filtered.length === 1 ? "" : "s"} found
-        {selectedHospital && ` near ${selectedHospital.name}`}
       </p>
 
       <div className="grid">
         {filtered.map((house) => (
-          <HouseCard
-            key={house.id}
-            house={house}
-            distanceKm={house.distance}
-            hospitalName={selectedHospital?.name}
-          />
+          <HouseCard key={house.id} house={house} />
         ))}
       </div>
 
       {filtered.length === 0 && (
         <div className="empty-state">
-          <p>
-            {selectedHospital
-              ? `No stays within ${NEAR_RADIUS_KM} km of ${selectedHospital.name}. Try clearing the hospital filter or widening other filters.`
-              : "No homes match your filters. Try widening your search."}
-          </p>
+          <p>No homes match your filters. Try widening your search.</p>
         </div>
       )}
     </div>
