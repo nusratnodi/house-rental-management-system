@@ -1,0 +1,66 @@
+[
+  {
+    "id": "ibn-sina-dhanmondi",
+    "name": "Ibn Sina Hospital",
+    "area": "Dhanmondi, Dhaka",
+    "lat": 23.7461,
+    "lng": 90.3742,
+    "icon": "🏥"
+  },
+  {
+    "id": "labaid-specialized",
+    "name": "Labaid Specialized Hospital",
+    "area": "Dhanmondi, Dhaka",
+    "lat": 23.7445,
+    "lng": 90.3756,
+    "icon": "🏥"
+  },
+  {
+    "id": "evercare-dhaka",
+    "name": "Evercare Hospital",
+    "area": "Bashundhara R/A, Dhaka",
+    "lat": 23.8147,
+    "lng": 90.4253,
+    "icon": "🏥"
+  },
+  {
+    "id": "square-hospital",
+    "name": "Square Hospital",
+    "area": "West Panthapath, Dhaka",
+    "lat": 23.7515,
+    "lng": 90.3839,
+    "icon": "🏥"
+  },
+  {
+    "id": "united-hospital",
+    "name": "United Hospital",
+    "area": "Gulshan 2, Dhaka",
+    "lat": 23.8038,
+    "lng": 90.4175,
+    "icon": "🏥"
+  },
+  {
+    "id": "birdem",
+    "name": "BIRDEM General Hospital",
+    "area": "Shahbag, Dhaka",
+    "lat": 23.7383,
+    "lng": 90.3956,
+    "icon": "🏥"
+  },
+  {
+    "id": "popular-diagnostic",
+    "name": "Popular Diagnostic Centre",
+    "area": "Dhanmondi, Dhaka",
+    "lat": 23.7406,
+    "lng": 90.3753,
+    "icon": "🏥"
+  },
+  {
+    "id": "dhaka-medical",
+    "name": "Dhaka Medical College Hospital",
+    "area": "Bakshibazar, Dhaka",
+    "lat": 23.7257,
+    "lng": 90.3973,
+    "icon": "🏥"
+  }
+]
