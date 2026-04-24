@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 
 function nightsBetween(checkIn, checkOut) {
   if (!checkIn || !checkOut) return 0;
@@ -10,9 +11,14 @@ function nightsBetween(checkIn, checkOut) {
 
 export default function Cart() {
   const { cart, removeFromCart, updateCartItem, placeOrder } = useCart();
+  const { currentUser } = useAuth();
   const navigate = useNavigate();
   const [showCheckout, setShowCheckout] = useState(false);
-  const [guest, setGuest] = useState({ name: "", email: "", phone: "" });
+  const [guest, setGuest] = useState({
+    name: currentUser?.name || "",
+    email: currentUser?.email || "",
+    phone: currentUser?.phone || "",
+  });
 
   const subtotal = cart.reduce(
     (sum, item) => sum + item.house.pricePerNight * item.nights,

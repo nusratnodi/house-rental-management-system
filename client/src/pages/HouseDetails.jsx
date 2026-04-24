@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import housesData from "../data/houses.json";
 import { useCart } from "../context/CartContext";
+import { useData } from "../context/DataContext";
 
 function todayPlus(days) {
   const d = new Date();
@@ -19,6 +19,7 @@ export default function HouseDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const { houses: housesData } = useData();
 
   const house = housesData.find((h) => h.id === Number(id));
   const [activeImage, setActiveImage] = useState(house?.gallery?.[0] || house?.image);

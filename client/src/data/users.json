@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "role": "admin",
+    "name": "Super Admin",
+    "email": "admin@amarbasha.com",
+    "password": "admin123",
+    "phone": "+8801700000000",
+    "active": true,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "role": "admin",
+    "name": "Shahin Sheikh",
+    "email": "shahin@amarbasha.com",
+    "password": "shahin123",
+    "phone": "+8801711111111",
+    "active": true,
+    "createdAt": "2024-01-05T00:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "role": "customer",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "user123",
+    "phone": "+8801812345678",
+    "active": true,
+    "createdAt": "2024-02-01T00:00:00.000Z"
+  },
+  {
+    "id": 4,
+    "role": "customer",
+    "name": "Jane Smith",
+    "email": "jane@example.com",
+    "password": "user123",
+    "phone": "+8801987654321",
+    "active": true,
+    "createdAt": "2024-03-10T00:00:00.000Z"
+  },
+  {
+    "id": 5,
+    "role": "customer",
+    "name": "Ariana Rahman",
+    "email": "ariana@example.com",
+    "password": "user123",
+    "phone": "+8801555444333",
+    "active": true,
+    "createdAt": "2024-04-02T00:00:00.000Z"
+  }
+]

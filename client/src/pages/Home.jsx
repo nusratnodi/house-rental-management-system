@@ -1,13 +1,13 @@
 import { useMemo, useState } from "react";
-import housesData from "../data/houses.json";
-import hospitalsData from "../data/hospitals.json";
 import HouseCard from "../components/HouseCard";
 import { haversineKm } from "../utils/distance";
+import { useData } from "../context/DataContext";
 
 const ALL_AMENITIES = ["Wi-Fi", "AC", "Kitchen", "Pool", "Parking", "TV"];
 const NEAR_RADIUS_KM = 8;
 
 export default function Home() {
+  const { houses: housesData, hospitals: hospitalsData } = useData();
   const [search, setSearch] = useState("");
   const [maxPrice, setMaxPrice] = useState(250);
   const [superhostOnly, setSuperhostOnly] = useState(false);
@@ -22,7 +22,7 @@ export default function Home() {
 
   const selectedHospital = useMemo(
     () => hospitalsData.find((h) => h.id === hospitalId) || null,
-    [hospitalId]
+    [hospitalId, hospitalsData]
   );
 
   const filtered = useMemo(() => {
@@ -50,7 +50,7 @@ export default function Home() {
       list.sort((a, b) => a.distance - b.distance);
     }
     return list;
-  }, [search, maxPrice, superhostOnly, selectedAmenities, selectedHospital]);
+  }, [search, maxPrice, superhostOnly, selectedAmenities, selectedHospital, housesData]);
 
   return (
     <div className="container">

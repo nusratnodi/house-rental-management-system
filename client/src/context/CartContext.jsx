@@ -1,22 +1,17 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { useAuth } from "./AuthContext";
+import { useData } from "./DataContext";
 
 const CartContext = createContext(null);
 const CART_KEY = "ohrms_cart";
-const ORDERS_KEY = "ohrms_orders";
 
 export function CartProvider({ children }) {
+  const { currentUser } = useAuth();
+  const { orders, addOrder } = useData();
+
   const [cart, setCart] = useState(() => {
     try {
       const raw = localStorage.getItem(CART_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch {
-      return [];
-    }
-  });
-
-  const [orders, setOrders] = useState(() => {
-    try {
-      const raw = localStorage.getItem(ORDERS_KEY);
       return raw ? JSON.parse(raw) : [];
     } catch {
       return [];
@@ -27,18 +22,12 @@ export function CartProvider({ children }) {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
   }, [cart]);
 
-  useEffect(() => {
-    localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
-  }, [orders]);
-
   function addToCart(house, checkIn, checkOut, nights) {
     setCart((prev) => {
       const exists = prev.find((item) => item.house.id === house.id);
       if (exists) {
         return prev.map((item) =>
-          item.house.id === house.id
-            ? { ...item, checkIn, checkOut, nights }
-            : item
+          item.house.id === house.id ? { ...item, checkIn, checkOut, nights } : item
         );
       }
       return [...prev, { house, checkIn, checkOut, nights }];
@@ -51,9 +40,7 @@ export function CartProvider({ children }) {
 
   function updateCartItem(houseId, updates) {
     setCart((prev) =>
-      prev.map((item) =>
-        item.house.id === houseId ? { ...item, ...updates } : item
-      )
+      prev.map((item) => (item.house.id === houseId ? { ...item, ...updates } : item))
     );
   }
 
@@ -72,6 +59,7 @@ export function CartProvider({ children }) {
     const order = {
       id: Date.now(),
       placedAt: new Date().toISOString(),
+      userId: currentUser?.id ?? null,
       items: cart,
       subtotal,
       serviceFee,
@@ -79,10 +67,15 @@ export function CartProvider({ children }) {
       guest: guestInfo,
       status: "Confirmed",
     };
-    setOrders((prev) => [order, ...prev]);
+    addOrder(order);
     setCart([]);
     return order;
   }
+
+  const myOrders = useMemo(() => {
+    if (!currentUser) return [];
+    return orders.filter((o) => o.userId === currentUser.id);
+  }, [orders, currentUser]);
 
   const cartCount = cart.length;
 
@@ -90,7 +83,7 @@ export function CartProvider({ children }) {
     <CartContext.Provider
       value={{
         cart,
-        orders,
+        orders: myOrders,
         cartCount,
         addToCart,
         removeFromCart,

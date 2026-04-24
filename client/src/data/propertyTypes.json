@@ -1,0 +1,212 @@
+[
+  {
+    "id": "single-family",
+    "name": "Single-Family Home",
+    "icon": "🏡",
+    "pricingMode": "monthly",
+    "minLeaseMonths": 6,
+    "securityDepositMonths": 2,
+    "tenantGenderRule": "any",
+    "familyPreferred": true,
+    "requiresIdVerification": true,
+    "description": "Entire house rented to one family on a monthly contract.",
+    "conditions": [
+      "Monthly rent (vara) system",
+      "Minimum 6 months / 1 year contract",
+      "Security deposit required (1–2 months)",
+      "Entire house to a single tenant — family preferred",
+      "Utilities (gas, water, electricity) may be billed separately"
+    ]
+  },
+  {
+    "id": "girls-bachelor",
+    "name": "Girls Bachelor",
+    "icon": "👧",
+    "pricingMode": "monthly",
+    "minLeaseMonths": 3,
+    "securityDepositMonths": 1,
+    "tenantGenderRule": "female",
+    "familyPreferred": false,
+    "requiresIdVerification": true,
+    "description": "Female-only bachelor accommodation with shared facilities.",
+    "conditions": [
+      "Monthly rent",
+      "Only female tenants allowed",
+      "Government ID verification is mandatory",
+      "Guest restrictions apply",
+      "Shared kitchen / bathroom may apply",
+      "Curfew timings may apply"
+    ]
+  },
+  {
+    "id": "boys-bachelor",
+    "name": "Boys Bachelor",
+    "icon": "👦",
+    "pricingMode": "monthly",
+    "minLeaseMonths": 3,
+    "securityDepositMonths": 1,
+    "tenantGenderRule": "male",
+    "familyPreferred": false,
+    "requiresIdVerification": true,
+    "description": "Male-only bachelor accommodation with shared facilities.",
+    "conditions": [
+      "Monthly rent",
+      "Only male tenants allowed",
+      "Government ID verification is mandatory",
+      "No loud noise or parties",
+      "Shared facilities may apply"
+    ]
+  },
+  {
+    "id": "apartment",
+    "name": "Apartment",
+    "icon": "🏢",
+    "pricingMode": "monthly",
+    "minLeaseMonths": 6,
+    "securityDepositMonths": 2,
+    "tenantGenderRule": "any",
+    "familyPreferred": false,
+    "requiresIdVerification": true,
+    "description": "Apartment flat on a 6–12 month lease.",
+    "conditions": [
+      "Monthly rent",
+      "Lease agreement (6–12 months)",
+      "Families or bachelors allowed — subject to owner rules",
+      "Security deposit required",
+      "Maintenance charge may apply"
+    ]
+  },
+  {
+    "id": "townhouse",
+    "name": "Townhouse",
+    "icon": "🏘️",
+    "pricingMode": "monthly",
+    "minLeaseMonths": 12,
+    "securityDepositMonths": 2,
+    "tenantGenderRule": "any",
+    "familyPreferred": true,
+    "requiresIdVerification": true,
+    "description": "Row house in a community with shared rules.",
+    "conditions": [
+      "Monthly rent",
+      "Long-term lease (1 year)",
+      "Family preferred",
+      "Parking and community rules must be followed",
+      "HOA (Home Owners Association) rules may apply"
+    ]
+  },
+  {
+    "id": "condo",
+    "name": "Condominium",
+    "icon": "🏙️",
+    "pricingMode": "both",
+    "minLeaseMonths": 1,
+    "securityDepositMonths": 1,
+    "tenantGenderRule": "any",
+    "familyPreferred": false,
+    "requiresIdVerification": true,
+    "description": "Condo unit — short-term or monthly rental.",
+    "conditions": [
+      "Monthly rent or short-term stay both possible",
+      "Strict building rules must be followed",
+      "Security and maintenance included",
+      "Facilities (gym, lift, security) available",
+      "Owner approval may be required"
+    ]
+  },
+  {
+    "id": "duplex",
+    "name": "Duplex",
+    "icon": "🏠",
+    "pricingMode": "monthly",
+    "minLeaseMonths": 6,
+    "securityDepositMonths": 2,
+    "tenantGenderRule": "any",
+    "familyPreferred": true,
+    "requiresIdVerification": true,
+    "description": "Two-family building with shared entrance.",
+    "conditions": [
+      "Monthly rent",
+      "Two families share the same building",
+      "Shared entrance / utilities may apply",
+      "Family preferred",
+      "Long-term lease"
+    ]
+  },
+  {
+    "id": "mobile-home",
+    "name": "Mobile Home",
+    "icon": "🚐",
+    "pricingMode": "monthly",
+    "minLeaseMonths": 1,
+    "securityDepositMonths": 1,
+    "tenantGenderRule": "any",
+    "familyPreferred": false,
+    "requiresIdVerification": true,
+    "description": "Low-cost mobile housing unit (fixed location).",
+    "conditions": [
+      "Monthly rent or lease",
+      "Low-cost housing option",
+      "Utilities must be paid separately",
+      "Unit remains at a fixed location"
+    ]
+  },
+  {
+    "id": "tiny-house",
+    "name": "Tiny House",
+    "icon": "🏚️",
+    "pricingMode": "both",
+    "minLeaseMonths": 1,
+    "securityDepositMonths": 0,
+    "tenantGenderRule": "any",
+    "familyPreferred": false,
+    "requiresIdVerification": false,
+    "description": "Compact home suited to 1–2 guests.",
+    "conditions": [
+      "Short-term or long-term both possible",
+      "Suitable for 1–2 people",
+      "Low rent",
+      "Minimal facilities",
+      "Advance booking may be required"
+    ]
+  },
+  {
+    "id": "hotel",
+    "name": "Hotel / Short Stay",
+    "icon": "🏨",
+    "pricingMode": "daily",
+    "minLeaseMonths": 0,
+    "securityDepositMonths": 0,
+    "tenantGenderRule": "any",
+    "familyPreferred": false,
+    "requiresIdVerification": true,
+    "description": "Hotel-style short stay with daily or weekly billing.",
+    "conditions": [
+      "Check-in / check-out system",
+      "Daily or weekly payment",
+      "Government ID verification required",
+      "Room service available",
+      "No long-term contract"
+    ]
+  },
+  {
+    "id": "super",
+    "name": "Super Condition",
+    "icon": "✨",
+    "kind": "tag",
+    "pricingMode": "none",
+    "minLeaseMonths": 0,
+    "securityDepositMonths": 0,
+    "tenantGenderRule": "any",
+    "familyPreferred": false,
+    "requiresIdVerification": false,
+    "description": "Premium ready-to-move listings with all facilities — shown at the top.",
+    "conditions": [
+      "Fully furnished",
+      "Ready to move",
+      "All facilities included (Wi-Fi, AC, etc.)",
+      "Higher rent applies",
+      "Priority listing — shown at the top of search results"
+    ]
+  }
+]
