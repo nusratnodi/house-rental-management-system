@@ -15,7 +15,7 @@ export default function Register() {
     setForm((f) => ({ ...f, [field]: value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     setError("");
     if (form.password.length < 6) {
@@ -27,7 +27,7 @@ export default function Register() {
       return;
     }
     setSubmitting(true);
-    const res = register({
+    const res = await register({
       name: form.name,
       email: form.email,
       phone: form.phone,

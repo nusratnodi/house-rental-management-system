@@ -1,135 +1,123 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import seedHouses from "../data/houses.json";
-import seedHospitals from "../data/hospitals.json";
-import seedUsers from "../data/users.json";
-import seedPropertyTypes from "../data/propertyTypes.json";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { api } from "../utils/api";
 
 const DataContext = createContext(null);
 
-const HOUSES_KEY = "ohrms_houses";
-const HOSPITALS_KEY = "ohrms_hospitals";
-const USERS_KEY = "ohrms_users";
-const ORDERS_KEY = "ohrms_orders";
-const PTYPES_KEY = "ohrms_property_types";
-const VERSION_KEY = "ohrms_data_version";
-const DATA_VERSION = 2;
-
-function loadOrSeed(key, seed, version) {
-  try {
-    const raw = localStorage.getItem(key);
-    if (raw && version === DATA_VERSION) return JSON.parse(raw);
-  } catch {
-    // ignore
-  }
-  localStorage.setItem(key, JSON.stringify(seed));
-  return seed;
-}
-
-function loadStoredVersion() {
-  try {
-    return Number(localStorage.getItem(VERSION_KEY)) || 0;
-  } catch {
-    return 0;
-  }
-}
-
-function nextId(list) {
-  return list.reduce((m, x) => Math.max(m, Number(x.id) || 0), 0) + 1;
-}
-
 export function DataProvider({ children }) {
-  const storedVersion = loadStoredVersion();
+  const [houses, setHouses] = useState([]);
+  const [hospitals, setHospitals] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [propertyTypes, setPropertyTypes] = useState([]);
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const [houses, setHouses] = useState(() => loadOrSeed(HOUSES_KEY, seedHouses, storedVersion));
-  const [hospitals, setHospitals] = useState(() => loadOrSeed(HOSPITALS_KEY, seedHospitals, storedVersion));
-  const [users, setUsers] = useState(() => loadOrSeed(USERS_KEY, seedUsers, storedVersion));
-  const [propertyTypes, setPropertyTypes] = useState(() =>
-    loadOrSeed(PTYPES_KEY, seedPropertyTypes, storedVersion)
-  );
-  const [orders, setOrders] = useState(() => {
+  const refresh = useCallback(async () => {
+    setLoading(true);
+    setError(null);
     try {
-      const raw = localStorage.getItem(ORDERS_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch {
-      return [];
+      const [h, hosp, u, pt, o] = await Promise.all([
+        api.get("/houses"),
+        api.get("/hospitals"),
+        api.get("/users"),
+        api.get("/property-types"),
+        api.get("/orders"),
+      ]);
+      setHouses(h || []);
+      setHospitals(hosp || []);
+      setUsers(u || []);
+      setPropertyTypes(pt || []);
+      setOrders(o || []);
+    } catch (err) {
+      console.error("[data] failed to load:", err);
+      setError(err.message || "Failed to load data");
+    } finally {
+      setLoading(false);
     }
-  });
+  }, []);
 
-  useEffect(() => { localStorage.setItem(VERSION_KEY, String(DATA_VERSION)); }, []);
-  useEffect(() => { localStorage.setItem(HOUSES_KEY, JSON.stringify(houses)); }, [houses]);
-  useEffect(() => { localStorage.setItem(HOSPITALS_KEY, JSON.stringify(hospitals)); }, [hospitals]);
-  useEffect(() => { localStorage.setItem(USERS_KEY, JSON.stringify(users)); }, [users]);
-  useEffect(() => { localStorage.setItem(PTYPES_KEY, JSON.stringify(propertyTypes)); }, [propertyTypes]);
-  useEffect(() => { localStorage.setItem(ORDERS_KEY, JSON.stringify(orders)); }, [orders]);
+  useEffect(() => { refresh(); }, [refresh]);
 
   // ---------- Houses ----------
-  function createHouse(data) {
-    const house = { ...data, id: nextId(houses) };
-    setHouses((p) => [house, ...p]);
-    return house;
+  async function createHouse(data) {
+    const created = await api.post("/houses", data);
+    setHouses((p) => [created, ...p]);
+    return created;
   }
-  function updateHouse(id, patch) {
-    setHouses((p) => p.map((h) => (h.id === id ? { ...h, ...patch } : h)));
+  async function updateHouse(id, patch) {
+    const updated = await api.put(`/houses/${id}`, patch);
+    setHouses((p) => p.map((h) => (h.id === id ? updated : h)));
   }
-  function deleteHouse(id) {
+  async function deleteHouse(id) {
+    await api.del(`/houses/${id}`);
     setHouses((p) => p.filter((h) => h.id !== id));
   }
 
   // ---------- Hospitals ----------
-  function createHospital(data) {
-    const hospital = { ...data, id: data.id || `hospital-${Date.now()}` };
-    setHospitals((p) => [...p, hospital]);
-    return hospital;
+  async function createHospital(data) {
+    const created = await api.post("/hospitals", data);
+    setHospitals((p) => [...p, created]);
+    return created;
   }
-  function updateHospital(id, patch) {
-    setHospitals((p) => p.map((h) => (h.id === id ? { ...h, ...patch } : h)));
+  async function updateHospital(id, patch) {
+    const updated = await api.put(`/hospitals/${id}`, patch);
+    setHospitals((p) => p.map((h) => (h.id === id ? updated : h)));
   }
-  function deleteHospital(id) {
+  async function deleteHospital(id) {
+    await api.del(`/hospitals/${id}`);
     setHospitals((p) => p.filter((h) => h.id !== id));
   }
 
   // ---------- Users ----------
-  function createUser(data) {
-    const user = {
+  async function createUser(data) {
+    const payload = {
       role: "customer",
       active: true,
       createdAt: new Date().toISOString(),
       ...data,
-      id: nextId(users),
     };
-    setUsers((p) => [...p, user]);
-    return user;
+    const created = await api.post("/users", payload);
+    setUsers((p) => [...p, created]);
+    return created;
   }
-  function updateUser(id, patch) {
-    setUsers((p) => p.map((u) => (u.id === id ? { ...u, ...patch } : u)));
+  async function updateUser(id, patch) {
+    const updated = await api.put(`/users/${id}`, patch);
+    setUsers((p) => p.map((u) => (u.id === id ? updated : u)));
   }
-  function deleteUser(id) {
+  async function deleteUser(id) {
+    await api.del(`/users/${id}`);
     setUsers((p) => p.filter((u) => u.id !== id));
   }
 
   // ---------- Property Types ----------
-  function createPropertyType(data) {
-    const pt = { ...data };
-    if (!pt.id) return null;
-    if (propertyTypes.some((x) => x.id === pt.id)) return null;
-    setPropertyTypes((p) => [...p, pt]);
-    return pt;
+  async function createPropertyType(data) {
+    if (!data.id) return null;
+    if (propertyTypes.some((x) => x.id === data.id)) return null;
+    const created = await api.post("/property-types", data);
+    setPropertyTypes((p) => [...p, created]);
+    return created;
   }
-  function updatePropertyType(id, patch) {
-    setPropertyTypes((p) => p.map((t) => (t.id === id ? { ...t, ...patch } : t)));
+  async function updatePropertyType(id, patch) {
+    const updated = await api.put(`/property-types/${id}`, patch);
+    setPropertyTypes((p) => p.map((t) => (t.id === id ? updated : t)));
   }
-  function deletePropertyType(id) {
+  async function deletePropertyType(id) {
+    await api.del(`/property-types/${id}`);
     setPropertyTypes((p) => p.filter((t) => t.id !== id));
   }
 
   // ---------- Orders ----------
-  function addOrder(order) {
-    setOrders((p) => [order, ...p]);
+  async function addOrder(order) {
+    const created = await api.post("/orders", order);
+    setOrders((p) => [created, ...p]);
+    return created;
   }
-  function updateOrder(id, patch) {
-    setOrders((p) => p.map((o) => (o.id === id ? { ...o, ...patch } : o)));
+  async function updateOrder(id, patch) {
+    const updated = await api.put(`/orders/${id}`, patch);
+    setOrders((p) => p.map((o) => (o.id === id ? updated : o)));
   }
-  function deleteOrder(id) {
+  async function deleteOrder(id) {
+    await api.del(`/orders/${id}`);
     setOrders((p) => p.filter((o) => o.id !== id));
   }
 
@@ -145,6 +133,9 @@ export function DataProvider({ children }) {
 
   const value = useMemo(
     () => ({
+      loading,
+      error,
+      refresh,
       houses,
       hospitals,
       users,
@@ -167,7 +158,7 @@ export function DataProvider({ children }) {
       updateOrder,
       deleteOrder,
     }),
-    [houses, hospitals, users, orders, propertyTypes, propertyTypeById]
+    [loading, error, refresh, houses, hospitals, users, orders, propertyTypes, propertyTypeById]
   );
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

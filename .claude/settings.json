@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(node src/diagnose.js)",
+      "Bash(node -e \"const dns = require\\('dns'\\); dns.resolveTxt\\('cluster0.14ia0zj.mongodb.net', \\(e, r\\) => console.log\\('TXT:', e ? e.code : r\\)\\);\")",
+      "Bash(node src/diagnose2.js)"
+    ]
+  }
+}

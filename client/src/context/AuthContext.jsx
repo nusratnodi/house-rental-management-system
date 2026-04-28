@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { useData } from "./DataContext";
+import { api } from "../utils/api";
 
 const AuthContext = createContext(null);
 const SESSION_KEY = "ohrms_session";
@@ -12,7 +13,7 @@ function publicUser(u) {
 }
 
 export function AuthProvider({ children }) {
-  const { users, createUser, updateUser } = useData();
+  const { users, refresh, updateUser } = useData();
 
   const [session, setSession] = useState(() => {
     try {
@@ -33,17 +34,15 @@ export function AuthProvider({ children }) {
     return publicUser(users.find((u) => u.id === session.userId));
   }, [session, users]);
 
-  function loginAs(role, email, password) {
-    const u = users.find(
-      (x) =>
-        x.email.toLowerCase() === email.toLowerCase().trim() &&
-        x.password === password &&
-        x.role === role &&
-        x.active !== false
-    );
-    if (!u) return { ok: false, error: "Invalid credentials for this account type." };
-    setSession({ userId: u.id, role: u.role });
-    return { ok: true, user: publicUser(u) };
+  async function loginAs(role, email, password) {
+    try {
+      const res = await api.post("/auth/login", { role, email, password });
+      if (!res?.ok || !res.user) return { ok: false, error: "Invalid credentials for this account type." };
+      setSession({ userId: res.user.id, role: res.user.role });
+      return { ok: true, user: res.user };
+    } catch (err) {
+      return { ok: false, error: err.message || "Login failed." };
+    }
   }
 
   function loginCustomer(email, password) {
@@ -58,24 +57,21 @@ export function AuthProvider({ children }) {
     setSession(null);
   }
 
-  function register({ name, email, password, phone }) {
-    const exists = users.some((u) => u.email.toLowerCase() === email.toLowerCase().trim());
-    if (exists) return { ok: false, error: "An account with this email already exists." };
-    const user = createUser({
-      name: name.trim(),
-      email: email.trim(),
-      password,
-      phone: phone?.trim() || "",
-      role: "customer",
-      active: true,
-    });
-    setSession({ userId: user.id, role: user.role });
-    return { ok: true, user: publicUser(user) };
+  async function register({ name, email, password, phone }) {
+    try {
+      const res = await api.post("/auth/register", { name, email, password, phone });
+      if (!res?.ok || !res.user) return { ok: false, error: "Registration failed." };
+      await refresh();
+      setSession({ userId: res.user.id, role: res.user.role });
+      return { ok: true, user: res.user };
+    } catch (err) {
+      return { ok: false, error: err.message || "Registration failed." };
+    }
   }
 
-  function updateProfile(patch) {
+  async function updateProfile(patch) {
     if (!currentUser) return;
-    updateUser(currentUser.id, patch);
+    await updateUser(currentUser.id, patch);
   }
 
   const value = {

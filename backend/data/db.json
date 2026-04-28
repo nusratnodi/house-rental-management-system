@@ -1,0 +1,870 @@
+{
+  "houses": [
+    {
+      "id": 1,
+      "title": "Cozy Modern Apartment in Dhanmondi",
+      "city": "Dhaka",
+      "address": "Road 27, Dhanmondi, Dhaka",
+      "lat": 23.7461,
+      "lng": 90.3742,
+      "propertyType": "apartment",
+      "pricePerNight": 45,
+      "pricePerMonth": 600,
+      "superFeatured": true,
+      "rating": 4.8,
+      "reviews": 124,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "guests": 4,
+      "superhost": true,
+      "amenities": [
+        "Wi-Fi",
+        "AC",
+        "Kitchen",
+        "Washer",
+        "TV"
+      ],
+      "image": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200",
+        "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200",
+        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200"
+      ],
+      "description": "A bright, comfortable apartment located in the heart of Dhanmondi. Walk to lakes, restaurants, and cafes."
+    },
+    {
+      "id": 2,
+      "title": "Luxury Villa with Pool in Gulshan",
+      "city": "Dhaka",
+      "address": "Gulshan 2, Dhaka",
+      "lat": 23.7925,
+      "lng": 90.4078,
+      "propertyType": "single-family",
+      "pricePerNight": 180,
+      "pricePerMonth": 3800,
+      "superFeatured": true,
+      "rating": 4.95,
+      "reviews": 89,
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "guests": 8,
+      "superhost": true,
+      "amenities": [
+        "Wi-Fi",
+        "AC",
+        "Kitchen",
+        "Pool",
+        "Parking",
+        "TV"
+      ],
+      "image": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200",
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200",
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200"
+      ],
+      "description": "Spacious modern villa with a private pool, perfect for families or groups."
+    },
+    {
+      "id": 3,
+      "title": "Beachfront Bungalow",
+      "city": "Cox's Bazar",
+      "address": "Inani Beach Road, Cox's Bazar",
+      "lat": 21.4272,
+      "lng": 92.0058,
+      "propertyType": "hotel",
+      "pricePerNight": 95,
+      "pricePerMonth": 2000,
+      "superFeatured": false,
+      "rating": 4.7,
+      "reviews": 210,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "guests": 6,
+      "superhost": false,
+      "amenities": [
+        "Wi-Fi",
+        "AC",
+        "Kitchen",
+        "Beach Access"
+      ],
+      "image": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1200",
+        "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=1200",
+        "https://images.unsplash.com/photo-1519302959554-a75be0afc82a?w=1200"
+      ],
+      "description": "Wake up to ocean views in this charming beachfront bungalow with direct access to the sand."
+    },
+    {
+      "id": 4,
+      "title": "Hillside Wooden Cabin",
+      "city": "Bandarban",
+      "address": "Nilgiri Hills, Bandarban",
+      "lat": 22.1953,
+      "lng": 92.2184,
+      "propertyType": "tiny-house",
+      "pricePerNight": 60,
+      "pricePerMonth": 1200,
+      "superFeatured": false,
+      "rating": 4.6,
+      "reviews": 67,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "guests": 4,
+      "superhost": false,
+      "amenities": [
+        "Wi-Fi",
+        "Kitchen",
+        "Fireplace",
+        "Mountain View"
+      ],
+      "image": "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1200",
+        "https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=1200",
+        "https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=1200"
+      ],
+      "description": "Escape to the hills in this peaceful wooden cabin surrounded by nature."
+    },
+    {
+      "id": 5,
+      "title": "Girls Bachelor Mess · Banani",
+      "city": "Dhaka",
+      "address": "Road 11, Banani, Dhaka",
+      "lat": 23.7937,
+      "lng": 90.4066,
+      "propertyType": "girls-bachelor",
+      "pricePerNight": 35,
+      "pricePerMonth": 180,
+      "superFeatured": false,
+      "rating": 4.5,
+      "reviews": 156,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "guests": 2,
+      "superhost": false,
+      "amenities": [
+        "Wi-Fi",
+        "AC",
+        "Kitchen",
+        "TV"
+      ],
+      "image": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200",
+        "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1200"
+      ],
+      "description": "Safe, clean female-only bachelor mess near universities and offices."
+    },
+    {
+      "id": 6,
+      "title": "Tea Garden View Cottage",
+      "city": "Sylhet",
+      "address": "Srimangal, Sylhet",
+      "lat": 24.3065,
+      "lng": 91.7296,
+      "propertyType": "tiny-house",
+      "pricePerNight": 70,
+      "pricePerMonth": 1500,
+      "superFeatured": false,
+      "rating": 4.85,
+      "reviews": 98,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "guests": 4,
+      "superhost": true,
+      "amenities": [
+        "Wi-Fi",
+        "Kitchen",
+        "Garden",
+        "Parking"
+      ],
+      "image": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200",
+        "https://images.unsplash.com/photo-1494526585095-c41746248156?w=1200",
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200"
+      ],
+      "description": "Relax in a quiet cottage overlooking endless tea gardens. Perfect weekend retreat."
+    },
+    {
+      "id": 7,
+      "title": "Riverside Houseboat",
+      "city": "Sundarbans",
+      "address": "Khulna Port, Sundarbans",
+      "lat": 22.4953,
+      "lng": 89.487,
+      "propertyType": "hotel",
+      "pricePerNight": 120,
+      "pricePerMonth": 2500,
+      "superFeatured": false,
+      "rating": 4.9,
+      "reviews": 45,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "guests": 6,
+      "superhost": true,
+      "amenities": [
+        "Wi-Fi",
+        "Kitchen",
+        "River View",
+        "Boat Tour"
+      ],
+      "image": "https://images.unsplash.com/photo-1505765050516-f72dcac9c60b?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1505765050516-f72dcac9c60b?w=1200",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200",
+        "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=1200"
+      ],
+      "description": "Unique houseboat experience along the Sundarbans rivers with optional guided tours."
+    },
+    {
+      "id": 8,
+      "title": "Penthouse Condo with City Skyline",
+      "city": "Dhaka",
+      "address": "Bashundhara R/A, Dhaka",
+      "lat": 23.8103,
+      "lng": 90.4286,
+      "propertyType": "condo",
+      "pricePerNight": 220,
+      "pricePerMonth": 4500,
+      "superFeatured": true,
+      "rating": 4.92,
+      "reviews": 73,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "guests": 6,
+      "superhost": true,
+      "amenities": [
+        "Wi-Fi",
+        "AC",
+        "Kitchen",
+        "Gym",
+        "Parking",
+        "City View"
+      ],
+      "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200",
+        "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200",
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200"
+      ],
+      "description": "Top-floor penthouse condo with panoramic views of Dhaka's skyline. Premium amenities included."
+    },
+    {
+      "id": 9,
+      "title": "Mobile Home near Mithapukur",
+      "city": "Rangpur",
+      "address": "Mithapukur, Rangpur",
+      "lat": 25.7558,
+      "lng": 89.2444,
+      "propertyType": "mobile-home",
+      "pricePerNight": 25,
+      "pricePerMonth": 220,
+      "superFeatured": false,
+      "rating": 4.4,
+      "reviews": 38,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "guests": 4,
+      "superhost": false,
+      "amenities": [
+        "Kitchen",
+        "Garden"
+      ],
+      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1200",
+        "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1200",
+        "https://images.unsplash.com/photo-1542621334-a254cf47733d?w=1200"
+      ],
+      "description": "Affordable mobile home at a fixed location with a small garden plot."
+    },
+    {
+      "id": 10,
+      "title": "Modern Glass Duplex Retreat",
+      "city": "Chattogram",
+      "address": "Foy's Lake Area, Chattogram",
+      "lat": 22.3663,
+      "lng": 91.7889,
+      "propertyType": "duplex",
+      "pricePerNight": 150,
+      "pricePerMonth": 3200,
+      "superFeatured": false,
+      "rating": 4.88,
+      "reviews": 112,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "guests": 5,
+      "superhost": true,
+      "amenities": [
+        "Wi-Fi",
+        "AC",
+        "Kitchen",
+        "Lake View",
+        "Parking",
+        "TV"
+      ],
+      "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200",
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200"
+      ],
+      "description": "Stunning duplex with glass walls overlooking Foy's Lake. Architectural masterpiece."
+    },
+    {
+      "id": 11,
+      "title": "Heritage Colonial Townhouse",
+      "city": "Khulna",
+      "address": "Khalishpur, Khulna",
+      "lat": 22.8456,
+      "lng": 89.5403,
+      "propertyType": "townhouse",
+      "pricePerNight": 80,
+      "pricePerMonth": 1700,
+      "superFeatured": false,
+      "rating": 4.65,
+      "reviews": 54,
+      "bedrooms": 4,
+      "bathrooms": 2,
+      "guests": 7,
+      "superhost": false,
+      "amenities": [
+        "Wi-Fi",
+        "AC",
+        "Kitchen",
+        "Garden",
+        "Parking"
+      ],
+      "image": "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=1200",
+        "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=1200",
+        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200"
+      ],
+      "description": "Restored colonial-era townhouse with high ceilings, antique furnishings, and a lush garden."
+    },
+    {
+      "id": 12,
+      "title": "Minimalist Tiny House",
+      "city": "Rajshahi",
+      "address": "Padma Riverbank, Rajshahi",
+      "lat": 24.3636,
+      "lng": 88.6241,
+      "propertyType": "tiny-house",
+      "pricePerNight": 40,
+      "pricePerMonth": 800,
+      "superFeatured": false,
+      "rating": 4.55,
+      "reviews": 41,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "guests": 2,
+      "superhost": false,
+      "amenities": [
+        "Wi-Fi",
+        "Kitchen",
+        "River View"
+      ],
+      "image": "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=1200",
+        "https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1200",
+        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200"
+      ],
+      "description": "Compact, sustainable tiny house with everything you need for a peaceful riverside escape."
+    },
+    {
+      "id": 13,
+      "title": "Family Flat near Square Hospital",
+      "city": "Dhaka",
+      "address": "West Panthapath, Dhaka",
+      "lat": 23.753,
+      "lng": 90.3845,
+      "propertyType": "apartment",
+      "pricePerNight": 55,
+      "pricePerMonth": 800,
+      "superFeatured": false,
+      "rating": 4.6,
+      "reviews": 88,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "guests": 5,
+      "superhost": false,
+      "amenities": [
+        "Wi-Fi",
+        "AC",
+        "Kitchen",
+        "TV",
+        "Parking"
+      ],
+      "image": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200",
+        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200"
+      ],
+      "description": "Comfortable 3-bedroom flat ideal for families visiting patients at nearby hospitals."
+    },
+    {
+      "id": 14,
+      "title": "Boys Bachelor Mess · Mohammadpur",
+      "city": "Dhaka",
+      "address": "Iqbal Road, Mohammadpur, Dhaka",
+      "lat": 23.7654,
+      "lng": 90.3589,
+      "propertyType": "boys-bachelor",
+      "pricePerNight": 28,
+      "pricePerMonth": 140,
+      "superFeatured": false,
+      "rating": 4.3,
+      "reviews": 62,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "guests": 2,
+      "superhost": false,
+      "amenities": [
+        "Wi-Fi",
+        "AC",
+        "Kitchen"
+      ],
+      "image": "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1200",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200",
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200"
+      ],
+      "description": "Budget-friendly male-only bachelor mess near universities and hospitals."
+    },
+    {
+      "id": 15,
+      "title": "Spacious Apartment near Evercare",
+      "city": "Dhaka",
+      "address": "Block J, Bashundhara R/A, Dhaka",
+      "lat": 23.816,
+      "lng": 90.424,
+      "propertyType": "apartment",
+      "pricePerNight": 75,
+      "pricePerMonth": 1200,
+      "superFeatured": true,
+      "rating": 4.75,
+      "reviews": 104,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "guests": 6,
+      "superhost": true,
+      "amenities": [
+        "Wi-Fi",
+        "AC",
+        "Kitchen",
+        "Parking",
+        "TV",
+        "Washer"
+      ],
+      "image": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200",
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200"
+      ],
+      "description": "Comfortable apartment for medical visitors — minutes from Evercare Hospital."
+    },
+    {
+      "id": 16,
+      "title": "Duplex House in Mirpur DOHS",
+      "city": "Dhaka",
+      "address": "Mirpur DOHS, Dhaka",
+      "lat": 23.8275,
+      "lng": 90.3674,
+      "propertyType": "duplex",
+      "pricePerNight": 38,
+      "pricePerMonth": 900,
+      "superFeatured": false,
+      "rating": 4.5,
+      "reviews": 49,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "guests": 4,
+      "superhost": false,
+      "amenities": [
+        "Wi-Fi",
+        "AC",
+        "Kitchen",
+        "Parking"
+      ],
+      "image": "https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=1200",
+        "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200",
+        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200"
+      ],
+      "description": "Peaceful duplex home in a residential pocket of Mirpur — easy commute across Dhaka."
+    },
+    {
+      "id": 17,
+      "title": "Modern Suite Hotel in Uttara",
+      "city": "Dhaka",
+      "address": "Sector 4, Uttara, Dhaka",
+      "lat": 23.8728,
+      "lng": 90.4017,
+      "propertyType": "hotel",
+      "pricePerNight": 50,
+      "pricePerMonth": 1000,
+      "superFeatured": true,
+      "rating": 4.65,
+      "reviews": 76,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "guests": 4,
+      "superhost": false,
+      "amenities": [
+        "Wi-Fi",
+        "AC",
+        "Kitchen",
+        "TV",
+        "Parking"
+      ],
+      "image": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200",
+        "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200",
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200"
+      ],
+      "description": "Stylish modern hotel suite near the airport — convenient for arriving travelers."
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "role": "admin",
+      "name": "Super Admin",
+      "email": "admin@amarbasha.com",
+      "password": "admin123",
+      "phone": "+8801700000000",
+      "active": true,
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "role": "admin",
+      "name": "Shahin Sheikh",
+      "email": "shahin@amarbasha.com",
+      "password": "shahin123",
+      "phone": "+8801711111111",
+      "active": true,
+      "createdAt": "2024-01-05T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "role": "customer",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "user123",
+      "phone": "+8801812345678",
+      "active": true,
+      "createdAt": "2024-02-01T00:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "role": "customer",
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "password": "user123",
+      "phone": "+8801987654321",
+      "active": true,
+      "createdAt": "2024-03-10T00:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "role": "customer",
+      "name": "Ariana Rahman",
+      "email": "ariana@example.com",
+      "password": "user123",
+      "phone": "+8801555444333",
+      "active": true,
+      "createdAt": "2024-04-02T00:00:00.000Z"
+    }
+  ],
+  "hospitals": [
+    {
+      "id": "ibn-sina-dhanmondi",
+      "name": "Ibn Sina Hospital",
+      "area": "Dhanmondi, Dhaka",
+      "lat": 23.7461,
+      "lng": 90.3742,
+      "icon": "🏥"
+    },
+    {
+      "id": "labaid-specialized",
+      "name": "Labaid Specialized Hospital",
+      "area": "Dhanmondi, Dhaka",
+      "lat": 23.7445,
+      "lng": 90.3756,
+      "icon": "🏥"
+    },
+    {
+      "id": "evercare-dhaka",
+      "name": "Evercare Hospital",
+      "area": "Bashundhara R/A, Dhaka",
+      "lat": 23.8147,
+      "lng": 90.4253,
+      "icon": "🏥"
+    },
+    {
+      "id": "square-hospital",
+      "name": "Square Hospital",
+      "area": "West Panthapath, Dhaka",
+      "lat": 23.7515,
+      "lng": 90.3839,
+      "icon": "🏥"
+    },
+    {
+      "id": "united-hospital",
+      "name": "United Hospital",
+      "area": "Gulshan 2, Dhaka",
+      "lat": 23.8038,
+      "lng": 90.4175,
+      "icon": "🏥"
+    },
+    {
+      "id": "birdem",
+      "name": "BIRDEM General Hospital",
+      "area": "Shahbag, Dhaka",
+      "lat": 23.7383,
+      "lng": 90.3956,
+      "icon": "🏥"
+    },
+    {
+      "id": "popular-diagnostic",
+      "name": "Popular Diagnostic Centre",
+      "area": "Dhanmondi, Dhaka",
+      "lat": 23.7406,
+      "lng": 90.3753,
+      "icon": "🏥"
+    },
+    {
+      "id": "dhaka-medical",
+      "name": "Dhaka Medical College Hospital",
+      "area": "Bakshibazar, Dhaka",
+      "lat": 23.7257,
+      "lng": 90.3973,
+      "icon": "🏥"
+    }
+  ],
+  "propertyTypes": [
+    {
+      "id": "single-family",
+      "name": "Single-Family Home",
+      "icon": "🏡",
+      "pricingMode": "monthly",
+      "minLeaseMonths": 6,
+      "securityDepositMonths": 2,
+      "tenantGenderRule": "any",
+      "familyPreferred": true,
+      "requiresIdVerification": true,
+      "description": "Entire house rented to one family on a monthly contract.",
+      "conditions": [
+        "Monthly rent (vara) system",
+        "Minimum 6 months / 1 year contract",
+        "Security deposit required (1–2 months)",
+        "Entire house to a single tenant — family preferred",
+        "Utilities (gas, water, electricity) may be billed separately"
+      ]
+    },
+    {
+      "id": "girls-bachelor",
+      "name": "Girls Bachelor",
+      "icon": "👧",
+      "pricingMode": "monthly",
+      "minLeaseMonths": 3,
+      "securityDepositMonths": 1,
+      "tenantGenderRule": "female",
+      "familyPreferred": false,
+      "requiresIdVerification": true,
+      "description": "Female-only bachelor accommodation with shared facilities.",
+      "conditions": [
+        "Monthly rent",
+        "Only female tenants allowed",
+        "Government ID verification is mandatory",
+        "Guest restrictions apply",
+        "Shared kitchen / bathroom may apply",
+        "Curfew timings may apply"
+      ]
+    },
+    {
+      "id": "boys-bachelor",
+      "name": "Boys Bachelor",
+      "icon": "👦",
+      "pricingMode": "monthly",
+      "minLeaseMonths": 3,
+      "securityDepositMonths": 1,
+      "tenantGenderRule": "male",
+      "familyPreferred": false,
+      "requiresIdVerification": true,
+      "description": "Male-only bachelor accommodation with shared facilities.",
+      "conditions": [
+        "Monthly rent",
+        "Only male tenants allowed",
+        "Government ID verification is mandatory",
+        "No loud noise or parties",
+        "Shared facilities may apply"
+      ]
+    },
+    {
+      "id": "apartment",
+      "name": "Apartment",
+      "icon": "🏢",
+      "pricingMode": "monthly",
+      "minLeaseMonths": 6,
+      "securityDepositMonths": 2,
+      "tenantGenderRule": "any",
+      "familyPreferred": false,
+      "requiresIdVerification": true,
+      "description": "Apartment flat on a 6–12 month lease.",
+      "conditions": [
+        "Monthly rent",
+        "Lease agreement (6–12 months)",
+        "Families or bachelors allowed — subject to owner rules",
+        "Security deposit required",
+        "Maintenance charge may apply"
+      ]
+    },
+    {
+      "id": "townhouse",
+      "name": "Townhouse",
+      "icon": "🏘️",
+      "pricingMode": "monthly",
+      "minLeaseMonths": 12,
+      "securityDepositMonths": 2,
+      "tenantGenderRule": "any",
+      "familyPreferred": true,
+      "requiresIdVerification": true,
+      "description": "Row house in a community with shared rules.",
+      "conditions": [
+        "Monthly rent",
+        "Long-term lease (1 year)",
+        "Family preferred",
+        "Parking and community rules must be followed",
+        "HOA (Home Owners Association) rules may apply"
+      ]
+    },
+    {
+      "id": "condo",
+      "name": "Condominium",
+      "icon": "🏙️",
+      "pricingMode": "both",
+      "minLeaseMonths": 1,
+      "securityDepositMonths": 1,
+      "tenantGenderRule": "any",
+      "familyPreferred": false,
+      "requiresIdVerification": true,
+      "description": "Condo unit — short-term or monthly rental.",
+      "conditions": [
+        "Monthly rent or short-term stay both possible",
+        "Strict building rules must be followed",
+        "Security and maintenance included",
+        "Facilities (gym, lift, security) available",
+        "Owner approval may be required"
+      ]
+    },
+    {
+      "id": "duplex",
+      "name": "Duplex",
+      "icon": "🏠",
+      "pricingMode": "monthly",
+      "minLeaseMonths": 6,
+      "securityDepositMonths": 2,
+      "tenantGenderRule": "any",
+      "familyPreferred": true,
+      "requiresIdVerification": true,
+      "description": "Two-family building with shared entrance.",
+      "conditions": [
+        "Monthly rent",
+        "Two families share the same building",
+        "Shared entrance / utilities may apply",
+        "Family preferred",
+        "Long-term lease"
+      ]
+    },
+    {
+      "id": "mobile-home",
+      "name": "Mobile Home",
+      "icon": "🚐",
+      "pricingMode": "monthly",
+      "minLeaseMonths": 1,
+      "securityDepositMonths": 1,
+      "tenantGenderRule": "any",
+      "familyPreferred": false,
+      "requiresIdVerification": true,
+      "description": "Low-cost mobile housing unit (fixed location).",
+      "conditions": [
+        "Monthly rent or lease",
+        "Low-cost housing option",
+        "Utilities must be paid separately",
+        "Unit remains at a fixed location"
+      ]
+    },
+    {
+      "id": "tiny-house",
+      "name": "Tiny House",
+      "icon": "🏚️",
+      "pricingMode": "both",
+      "minLeaseMonths": 1,
+      "securityDepositMonths": 0,
+      "tenantGenderRule": "any",
+      "familyPreferred": false,
+      "requiresIdVerification": false,
+      "description": "Compact home suited to 1–2 guests.",
+      "conditions": [
+        "Short-term or long-term both possible",
+        "Suitable for 1–2 people",
+        "Low rent",
+        "Minimal facilities",
+        "Advance booking may be required"
+      ]
+    },
+    {
+      "id": "hotel",
+      "name": "Hotel / Short Stay",
+      "icon": "🏨",
+      "pricingMode": "daily",
+      "minLeaseMonths": 0,
+      "securityDepositMonths": 0,
+      "tenantGenderRule": "any",
+      "familyPreferred": false,
+      "requiresIdVerification": true,
+      "description": "Hotel-style short stay with daily or weekly billing.",
+      "conditions": [
+        "Check-in / check-out system",
+        "Daily or weekly payment",
+        "Government ID verification required",
+        "Room service available",
+        "No long-term contract"
+      ]
+    },
+    {
+      "id": "super",
+      "name": "Super Condition",
+      "icon": "✨",
+      "kind": "tag",
+      "pricingMode": "none",
+      "minLeaseMonths": 0,
+      "securityDepositMonths": 0,
+      "tenantGenderRule": "any",
+      "familyPreferred": false,
+      "requiresIdVerification": false,
+      "description": "Premium ready-to-move listings with all facilities — shown at the top.",
+      "conditions": [
+        "Fully furnished",
+        "Ready to move",
+        "All facilities included (Wi-Fi, AC, etc.)",
+        "Higher rent applies",
+        "Priority listing — shown at the top of search results"
+      ]
+    }
+  ],
+  "orders": []
+}

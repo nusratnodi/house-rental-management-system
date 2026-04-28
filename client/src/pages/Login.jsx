@@ -15,11 +15,11 @@ export default function Login() {
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     setError("");
     setSubmitting(true);
-    const res = loginCustomer(email, password);
+    const res = await loginCustomer(email, password);
     setSubmitting(false);
     if (!res.ok) {
       setError(res.error);
